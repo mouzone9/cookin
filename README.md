@@ -7,4 +7,5 @@
   - Recette et commentaire
 
 ## Piero :
+  - Plugin custom
   - Recherche et filtre
