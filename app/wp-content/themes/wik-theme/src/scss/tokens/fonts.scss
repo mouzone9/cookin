@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@200;400;700&display=swap');
+
+@mixin text-title {
+  font-family: "Playfair Display", serif;
+  font-weight: normal;
+  font-size: 4.2rem;
+}
+
+.text--title {
+  @include text-title
+}
+
+@mixin text-medium {
+  font-family: "Poppins", serif;
+  font-weight: bold;
+  font-size: 2.6rem;
+}
+
+.text--medium {
+  @include text-medium
+}
+
+@mixin text-bold {
+  font-family: "Poppins", serif;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.text--bold {
+  @include text-bold
+}
+
+@mixin text-normal {
+  font-family: "Poppins", serif;
+  font-weight: normal;
+  font-size: 1.6rem;
+}
+
+.text--normal {
+  @include text-normal
+}

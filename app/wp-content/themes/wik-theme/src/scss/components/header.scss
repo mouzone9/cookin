@@ -1,0 +1,13 @@
+header {
+  box-shadow: rgb(0 0 0 / 22%) 0px 2px 18px 0px;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .buttons ul {
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+}
