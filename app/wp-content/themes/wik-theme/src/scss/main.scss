@@ -1,7 +1,10 @@
 @import "tokens/colors";
 @import "tokens/fonts";
 
-@import "general/general";
+@import "general/base";
+@import "general/form";
 
 @import "components/header";
 @import "components/buttons";
+
+@import "pages/sign-in";

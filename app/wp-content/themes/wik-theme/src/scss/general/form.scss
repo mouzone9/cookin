@@ -1,0 +1,23 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  margin: auto;
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    label {
+      @include text-small;
+    }
+  }
+
+  .input-group__checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap : 1rem;
+  }
+}
+

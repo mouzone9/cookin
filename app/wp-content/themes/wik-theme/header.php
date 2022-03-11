@@ -9,7 +9,9 @@
 </head>
 <body>
 <header>
-    <h1><?= get_bloginfo( "name" ) ?></h1>
+    <a href="<?= get_site_url()?>">
+        <img src="<?= get_template_directory_uri()?>/src/img/logo.svg" class="logo"/>
+    </a>
     <div class="buttons">
         <a href="/sign-in/" class="button button__dark">Sign in</a>
         <a href="#" class="button">Register</a>
