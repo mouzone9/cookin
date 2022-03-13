@@ -21,3 +21,12 @@ h2 {
 h1 {
   @include text-medium
 }
+
+main {
+  max-width: 60rem;
+  margin: 3rem auto 0 auto;
+
+  h2 {
+    text-align: center;
+  }
+}
