@@ -6,6 +6,8 @@ function wik_theme_supports() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'menus' );
 }
+add_action( 'after_setup_theme', "wik_theme_supports");
+add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
 
 add_action( 'after_setup_theme', "wik_theme_supports" );
 
@@ -18,6 +20,14 @@ add_action( 'wp_enqueue_scripts', function () {
 /* ADD SVG SUPPORT */
 function cc_mime_types( $mimes ) {
 	$mimes['svg'] = 'image/svg+xml';
+
+ 
+function add_my_post_types_to_query( $query ) {
+    if ( is_home() && $query->is_main_query() )
+        $query->set( 'post_type', array( 'post', 'baniers' ) );
+    return $query;
+}
+
 
 	return $mimes;
 }
