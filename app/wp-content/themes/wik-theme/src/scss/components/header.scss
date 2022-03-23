@@ -4,6 +4,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .logo {
+    height: 5rem;
+    width: auto;
+  }
 }
 
 header .buttons ul {

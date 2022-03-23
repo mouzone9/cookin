@@ -1,11 +1,13 @@
 .button, .buttons a{
   background-color: var(--french-pink);
   color: var(--pale-pink);
-  padding: 1rem 2rem;
-  border-radius: 2rem;
+  padding: 0.8rem 2rem;
+  border-radius: 5rem;
   text-decoration: none;
   //@include text-bold
   cursor: pointer;
+  appearance: none;
+  border: none;
   transition: background-color ease-in-out 200ms;
 }
 

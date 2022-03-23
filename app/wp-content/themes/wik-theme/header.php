@@ -9,9 +9,19 @@
 </head>
 <body>
 <header>
-    <h1><?= get_bloginfo( "name" ) ?></h1>
+    <a href="<?= get_site_url() ?>">
+        <img src="<?= get_template_directory_uri() ?>/src/img/logo.svg" class="logo"/>
+		<?php get_site_icon_url() ?>
+    </a>
     <div class="buttons">
-        <a href="/sign-in/" class="button button__dark">Sign in</a>
-        <a href="#" class="button">Register</a>
+		<?php if ( !is_user_logged_in() ): ?>
+            <a href="/inscription" class="button button__dark">Inscription</a>
+            <a href="/connexion" class="button">Connexion</a>
+		<?php endif ?>
+	    <?php if ( is_user_logged_in() ): ?>
+            <a href="/my-account/" class="button button__dark">My account</a>
+            <a href="<?= wp_logout_url("/")?>" class="button">Log out</a>
+	    <?php endif ?>
     </div>
 </header>
+<main class="<?= join(" ", get_post_class()) ?>">
