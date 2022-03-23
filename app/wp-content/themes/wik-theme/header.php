@@ -15,8 +15,8 @@
     </a>
     <div class="buttons">
 		<?php if ( !is_user_logged_in() ): ?>
-            <a href="/sign-in/" class="button button__dark">Sign in</a>
-            <a href="/register" class="button">Register</a>
+            <a href="/inscription" class="button button__dark">Inscription</a>
+            <a href="/connexion" class="button">Connexion</a>
 		<?php endif ?>
 	    <?php if ( is_user_logged_in() ): ?>
             <a href="/my-account/" class="button button__dark">My account</a>

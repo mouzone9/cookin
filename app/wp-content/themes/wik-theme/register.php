@@ -15,7 +15,7 @@ if ( $_POST ) {
 	] );
 
 	if ( ! is_wp_error( $user ) ) {
-		echo sprintf( "<p class='alert'>The user %s is created ! To sign in go to the <a href='/sign-in'>sign in</a> page !</p>", get_user_meta( $user )["nickname"][0] );
+		echo sprintf( "<p class='alert'>The user %s is created ! To sign in go to the <a href='/inscription'>sign in</a> page !</p>", get_user_meta( $user )["nickname"][0] );
 
 		exit;
 	} else {
