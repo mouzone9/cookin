@@ -8,6 +8,7 @@ function wik_theme_supports() {
 }
 add_action( 'after_setup_theme', "wik_theme_supports");
 add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
+add_theme_support( 'post-thumbnails' );
 
 /* ADD STYLES */
 add_action( 'wp_enqueue_scripts', function () {

@@ -1,11 +1,5 @@
 <?php
 
-/*
- * Add a new menu Banier to the Admin Control Panel
- */
-
-
-// Add a new top level menu link to the ACP
 
 function create_banier_posttype() {
  
@@ -31,6 +25,7 @@ function create_banier_posttype() {
         'label'               => __( 'baniers', 'wik-theme' ),
         'description'         => __( 'banier\'s description', 'wik-theme' ),
         'labels'              => $labels,
+        'supports'            => array( 'title', 'editor', 'author', 'revisions', 'custom-fields', 'thumbnail'),
         'hierarchical'        => false,
         'public'              => true,
         'show_ui'             => true,
