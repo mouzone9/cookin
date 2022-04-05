@@ -5,7 +5,7 @@
     <img src="<?php the_post_thumbnail_url(); ?>" alt="Image">
     <h5><?php the_title(); ?></h5>
     <p><?php the_content(); ?></p>
-<!--    <p>--><?php //the_date(); ?><!--</p>-->
+    <!--    <p>--><?php //the_date(); ?><!--</p>-->
 <?php endwhile; ?>
 
 <?php get_footer(); ?>
