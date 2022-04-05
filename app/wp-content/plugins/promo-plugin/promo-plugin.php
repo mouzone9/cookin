@@ -35,4 +35,41 @@ function prefix_disable_gutenberg($current_status, $post_type)
 
 add_action( 'init', 'create_banier_posttype' );
 
+function create_shortcode_baniers_post_type(){
+  
+    $args = array(
+                    'post_type'      => 'baniers',
+                    'posts_per_page' => '5',
+                    'publish_status' => 'published',
+                 );
+  
+    $query = new WP_Query($args);
+  
+    if($query->have_posts()) :
+		$result = '<div class="slideshow"><ul>';
+
+        while($query->have_posts()) :
+  
+            $query->the_post() ;
+                      
+			$result .= '<li class="baniers-item">';
+			$result .= '<div class="baniers-background">' . get_the_post_thumbnail() . '</div>';
+			$result .= '<div class="baniers-text">';
+			$result .= '<b class="baniers-name">' . get_the_title() . '</b>';
+			$result .= '<p class="baniers-desc">' . get_the_content() . '</p>'; 
+			$result .= '</div>'; 
+			$result .= '</li>';
+  
+        endwhile;
+		$result .= '</ul>';
+		$result .= '</div>';
+        wp_reset_postdata();
+  
+    endif;    
+  
+    return $result;            
+}
+  
+add_shortcode( 'baniers-list', 'create_shortcode_baniers_post_type' );
+
 ?>

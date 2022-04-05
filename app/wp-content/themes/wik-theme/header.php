@@ -28,4 +28,7 @@
 		<?php endif ?>
     </div>
 </header>
+<?php
+    echo do_shortcode ("[baniers-list]");
+?>
 <main class="<?= join( " ", get_post_class() ) ?>">

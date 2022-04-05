@@ -6,12 +6,13 @@ $the_query = new WP_Query( $args );
 
 <?php get_header(); ?>
 <h2>Femme, tu es au bon endroit pour apprendre.</h2>
-<?php
-    echo do_shortcode ("[baniers-list]");
-?>
+
 <div class="container">
     <h2><h2><?php the_title(); ?></h2></h2>
 </div>
+<?php
+    get_search_form();
+?>
 <p>Voici quelques recettes qui te permettront de régaler ton mari et tes enfants :</p>
 <?php if ( $the_query->have_posts() ) : ?>
 	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
