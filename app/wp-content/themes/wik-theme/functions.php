@@ -8,7 +8,8 @@ function wik_theme_supports() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'menus' );
 }
-add_action( 'after_setup_theme', "wik_theme_supports");
+
+add_action( 'after_setup_theme', "wik_theme_supports" );
 add_theme_support( 'post-thumbnails' );
 
 add_action( 'after_setup_theme', "wik_theme_supports" );
@@ -16,20 +17,14 @@ add_action( 'after_setup_theme', "wik_theme_supports" );
 /* ADD STYLES */
 add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'wik-css', get_template_directory_uri() . "/dist/main.css" );
-	wp_deregister_script('jquery');
-	wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), null, true);
-
+	wp_deregister_script( 'jquery' );
+	wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), null, true );
 	wp_enqueue_script( 'wik-js', get_template_directory_uri() . "/dist/main.js", array( 'jquery' ), '1.0.0', true );
 } );
 
 /* ADD SVG SUPPORT */
 function cc_mime_types( $mimes ) {
 	$mimes['svg'] = 'image/svg+xml';
-
-
-  
-
-
 
 	return $mimes;
 }
@@ -63,15 +58,11 @@ if ( ! is_admin() && ! current_user_can( "manage_recipe" ) ) {
 
 function add_cpt_recipe() {
 
-	// On rentre les différentes dénominations de notre custom post type qui seront affichées dans l'administration
+
 	$labels = array(
-		// Le nom au pluriel
 		'name'               => _x( 'Recette', 'Post Type General Name' ),
-		// Le nom au singulier
 		'singular_name'      => _x( 'Recette', 'Post Type Singular Name' ),
-		// Le libellé affiché dans le menu
 		'menu_name'          => __( 'Recettes' ),
-		// Les différents libellés de l'administration
 		'all_items'          => __( 'Toutes les recettes' ),
 		'view_item'          => __( 'Voir les recettes' ),
 		'add_new_item'       => __( 'Ajouter une nouvelle recette' ),
@@ -83,13 +74,11 @@ function add_cpt_recipe() {
 		'not_found_in_trash' => __( 'Non trouvée dans la corbeille' ),
 	);
 
-	// On peut définir ici d'autres options pour notre custom post type
 	$args = array(
-		'label'        => __( 'Recette' ),
-		'description'  => __( 'Tous sur Recette' ),
-		'labels'       => $labels,
-		// On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-		'supports'     => array(
+		'label'              => __( 'Recette' ),
+		'description'        => __( 'Tous sur Recette' ),
+		'labels'             => $labels,
+		'supports'           => array(
 			'title',
 			'editor',
 			'excerpt',
@@ -99,17 +88,14 @@ function add_cpt_recipe() {
 			'revisions',
 			'custom-fields',
 		),
-		/*
-		* Différentes options supplémentaires
-		*/
-		'show_in_rest' => true,
-		'hierarchical' => false,
-		'public'       => true,
-		'has_archive'  => true,
-		"show_in_menu" => true,
-		'publicly_queryable'  => true,
-		'rewrite'      => array( 'slug' => 'recette' ),
-		'capabilities' => [
+		'show_in_rest'       => true,
+		'hierarchical'       => false,
+		'public'             => true,
+		'has_archive'        => true,
+		"show_in_menu"       => true,
+		'publicly_queryable' => true,
+		'rewrite'            => array( 'slug' => 'recette' ),
+		'capabilities'       => [
 			'edit_post'          => "edit_recipe",
 			'edit_posts'         => "edit_recipe",
 			'read_post'          => "edit_recipe",
@@ -224,6 +210,26 @@ add_action( "admin_post_wik_register", function () {
 	}
 } );
 
+
+add_action( "admin_post_wik_delete_recipe", function () {
+	$result = "";
+	if ( user_can( get_current_user_id(), "edit_recipe" ) ) {
+		if ( isset( $_GET["recipe_id"] ) ) {
+			$result = wp_delete_post( $_GET["recipe_id"] )->post_title . " a bien été supprimé";
+		} else {
+			$result = "Erreur : pas de 'recipe_id'";
+		}
+	} else {
+		$result = "Erreur : vous n'êtes pas autorisé à supprimer cette recette";
+	}
+	if(isset($_GET["return_to"])) {
+		wp_redirect($_GET["return_to"]);
+	} else {
+		wp_redirect(home_url());
+	}
+
+} );
+
 add_filter( 'wp_check_filetype_and_ext', function ( $data, $file, $filename, $mimes ) {
 
 	global $wp_version;
@@ -266,8 +272,6 @@ function wik_register_style_taxonomy() {
 	//register_taxonomy(taxonomy: 'style', ['post'], $args);
 }
 
-
-  
 
 $MetaData = new metaData( 'ingredient' );
 $MetaData->wik();
