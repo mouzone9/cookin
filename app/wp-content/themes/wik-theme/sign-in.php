@@ -8,9 +8,8 @@
 get_header();
 the_post()
 ?>
-
     <h2><?= the_title() ?></h2>
-    <form name="loginform" id="loginform" action="<?= home_url('wp-login.php') ?>" method="post">
+    <form name="loginform" id="loginform" action="<?= home_url( 'wp-login.php' ) ?>" method="post">
         <div class="input-group">
             <label for="user_login">Username or Email Address</label>
             <input type="text" name="log" id="user_login" class="input" value="" size="20" placeholder="catherine">
@@ -29,7 +28,5 @@ the_post()
             <input type="hidden" name="redirect_to" value="<?= get_site_url() ?>/mon-compte/">
         </div>
     </form>
-    </main>
-
 <?php
 get_footer();
