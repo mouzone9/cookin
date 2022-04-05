@@ -11,21 +11,6 @@ if ( ! is_user_logged_in() ) {
 	wp_redirect( "/" );
 }
 
-//if ( $_POST ) {
-//	$recipe = wp_insert_post( [
-//		"post_content" => $_POST["recipe_recipe"],
-//		"post_title"   => $_POST["recipe_name"],
-//        "post_type" => "recipe",
-//        "post_status" => "pending",
-//        "post_author"=>get_current_user_id()
-//	] );
-//
-//	if ( ! is_wp_error( $recipe ) ) {
-//		echo sprintf( "<p class='alert'>Nouvelle recette '%s' crée !</p>", get_post($recipe)->post_title );
-//	} else {
-//		echo sprintf( "<p class='alert'>%s</p>", $recipe->get_error_message() );
-//	}
-//}
 
 ?>
     <h2><?= the_title() ?></h2>
@@ -45,7 +30,7 @@ if ( ! is_user_logged_in() ) {
                 <textarea name="recipe_recipe" id="recipe_recipe" class="input" cols="400" rows="100"
                           placeholder="1 - Cuire le pot au feu"></textarea>
             </div>
-            <input type="file" name="recipe_thumb" id="recipe-thumb" multiple="false"/>
+            <input type="file" name="recipe_thumb" id="recipe-thumb" multiple accept="image/*" required/>
             <input type="hidden" name="action" value="wik_add_recipe">
 			<?php wp_referer_field() ?>
 			<?php wp_nonce_field( "recipe", "nonce_new_recipe" ) ?>
