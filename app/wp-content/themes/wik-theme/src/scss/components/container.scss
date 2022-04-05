@@ -1,0 +1,8 @@
+.container {
+    grid-template-areas: "card card card";
+    display: inline-block;
+}
+
+.card-custom {
+    grid-area: card;
+}
