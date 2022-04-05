@@ -1,0 +1,13 @@
+.recipes-grid {
+  .recipe {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .recipes-buttons {
+    gap: 1rem;
+  }
+}
