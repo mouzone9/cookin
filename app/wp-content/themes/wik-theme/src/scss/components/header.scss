@@ -11,8 +11,46 @@ header {
   }
 }
 
-header .buttons ul {
+header ul.menu {
   list-style-type: none;
   display: flex;
   gap: 1rem;
+
+  a {
+    border-radius: 0 !important;
+  }
+
+  li.menu-item {
+    position: relative;
+
+    .sub-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      min-width: 150px;
+      background-color: white;
+
+      list-style-type: none;
+
+
+      a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+        padding: 1rem;
+
+        &:hover {
+          color : white;
+        }
+      }
+    }
+
+    &:hover .sub-menu {
+      display: flex;
+    }
+  }
+
 }

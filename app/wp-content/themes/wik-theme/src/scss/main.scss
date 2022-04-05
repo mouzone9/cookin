@@ -1,12 +1,12 @@
 @import "tokens/colors";
 @import "tokens/fonts";
 
-@import "components/card";
-@import "components/container";
-
 @import "general/base";
 @import "general/form";
+@import "components/card";
+@import "components/container";
 @import "components/header";
 @import "components/buttons";
 
 @import "pages/sign-in";
+@import "pages/list-recipe";

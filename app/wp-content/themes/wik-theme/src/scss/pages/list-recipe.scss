@@ -1,0 +1,15 @@
+.recipes-grid {
+  .recipe-row {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .recipes-buttons {
+    gap: 1rem;
+  }
+}
