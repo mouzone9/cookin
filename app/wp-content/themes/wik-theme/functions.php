@@ -107,6 +107,7 @@ function add_cpt_recipe() {
 		'public'       => true,
 		'has_archive'  => true,
 		"show_in_menu" => true,
+		'publicly_queryable'  => true,
 		'rewrite'      => array( 'slug' => 'recette' ),
 		'capabilities' => [
 			'edit_post'          => "edit_recipe",
@@ -264,6 +265,9 @@ function wik_register_style_taxonomy() {
 
 	//register_taxonomy(taxonomy: 'style', ['post'], $args);
 }
+
+
+  
 
 $MetaData = new metaData( 'ingredient' );
 $MetaData->wik();
