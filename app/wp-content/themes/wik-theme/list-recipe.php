@@ -17,11 +17,19 @@ $the_query = new WP_Query( $args );
 ?>
     <h2><?= the_title() ?></h2>
     <div class="recipes-grid">
+        <div class="recipe-row">
+            <p><strong>Titre</strong></p>
+            <p><strong>Publication</strong></p>
+            <p><strong>Statut</strong></p>
+            <p><strong>Action</strong></p>
+        </div>
 		<?php if ( $the_query->have_posts() ) : ?>
 			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                <div class="recipe">
+
+                <div class="recipe-row">
                     <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
                     <p><?php the_date('d/m/Y G:i')?></p>
+                    <p><?= get_post(get_the_ID())->post_status?></p>
                     <div class="is-flex-container recipes-buttons">
                         <a href="<?= get_site_url() ?>/modifier-recette?id=<?php the_ID() ?>" class="icon-link button">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -37,7 +45,6 @@ $the_query = new WP_Query( $args );
                             </svg>
                         </a>
                     </div>
-
                 </div>
 			<?php endwhile; ?>
 		<?php endif; ?>

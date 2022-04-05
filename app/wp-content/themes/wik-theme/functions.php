@@ -1,22 +1,21 @@
 <?php
 
-require_once('meta-data.php');
+require_once( 'meta-data.php' );
 
 /* ADD SUPPORTS */
-function wik_theme_supports()
-{
-	add_theme_support('title-tag');
-	add_theme_support('post-thumbnails');
-	add_theme_support('menus');
+function wik_theme_supports() {
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'menus' );
 }
 
 add_action( 'after_setup_theme', "wik_theme_supports" );
 
 /* ADD STYLES */
-add_action('wp_enqueue_scripts', function () {
-	wp_enqueue_style('wik-css', get_template_directory_uri() . "/dist/main.css");
-	wp_enqueue_script('wik-js', get_template_directory_uri() . "/dist/main.js");
-});
+add_action( 'wp_enqueue_scripts', function () {
+	wp_enqueue_style( 'wik-css', get_template_directory_uri() . "/dist/main.css" );
+	wp_enqueue_script( 'wik-js', get_template_directory_uri() . "/dist/main.js" );
+} );
 
 /* ADD SVG SUPPORT */
 function cc_mime_types( $mimes ) {
@@ -156,8 +155,12 @@ add_action( "admin_post_wik_add_recipe", function () {
 			"post_author"  => get_current_user_id()
 		] );
 		$thumb_id = media_handle_upload( "recipe_thumb", 0, array() );
+
+
 		if ( ! is_wp_error( $recipe ) && ! is_wp_error( $thumb_id ) ) {
+
 			set_post_thumbnail( $recipe, $thumb_id );
+
 //			addMessage(sprintf( "Nouvelle recette '%s' crée !", get_post( $recipe )->post_title ));
 			wp_redirect( $_POST["_wp_http_referer"] );
 		} else {
@@ -210,48 +213,47 @@ add_action( "admin_post_wik_register", function () {
 	}
 } );
 
-add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
+add_filter( 'wp_check_filetype_and_ext', function ( $data, $file, $filename, $mimes ) {
 
 	global $wp_version;
-	if ($wp_version !== '4.7.1') {
+	if ( $wp_version !== '4.7.1' ) {
 		return $data;
 	}
 
-	$filetype = wp_check_filetype($filename, $mimes);
+	$filetype = wp_check_filetype( $filename, $mimes );
 
 	return [
 		'ext'             => $filetype['ext'],
 		'type'            => $filetype['type'],
 		'proper_filename' => $data['proper_filename']
 	];
-}, 10, 4);
+}, 10, 4 );
 
 
 /* Remove admin bar */
-if (!is_admin() && !current_user_can("manage_options")) {
-	add_filter("show_admin_bar", "__return_false");
+if ( ! is_admin() && ! current_user_can( "manage_options" ) ) {
+	add_filter( "show_admin_bar", "__return_false" );
 }
 
-add_action('init', 'wik_register_style_taxonomy');
-function wik_register_style_taxonomy()
-{
+add_action( 'init', 'wik_register_style_taxonomy' );
+function wik_register_style_taxonomy() {
 	$labels = [
-		'name' => 'Styles',
+		'name'          => 'Styles',
 		'singular_name' => 'Style',
-		'search_items' => 'Rechercher Style',
-		'all_items' => 'Tous les styles',
+		'search_items'  => 'Rechercher Style',
+		'all_items'     => 'Tous les styles',
 	];
 
 	$args = [
-		'labels' => $labels,
-		'public' => true,
-		'hierarchical' => true,
-		'show_in_rest' => true,
+		'labels'            => $labels,
+		'public'            => true,
+		'hierarchical'      => true,
+		'show_in_rest'      => true,
 		'show_admin_column' => true
 	];
 
 	//register_taxonomy(taxonomy: 'style', ['post'], $args);
 }
 
-$MetaData = new metaData('ingredient');
+$MetaData = new metaData( 'ingredient' );
 $MetaData->wik();
