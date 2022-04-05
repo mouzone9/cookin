@@ -39,3 +39,14 @@
 .text--normal {
   @include text-normal
 }
+
+
+@mixin text-small {
+  font-family: "Poppins", serif;
+  font-size: 1.4rem;
+  font-weight: 200;
+}
+
+.text--small {
+  @include text-small
+}

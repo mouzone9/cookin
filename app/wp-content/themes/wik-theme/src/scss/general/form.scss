@@ -1,0 +1,36 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  margin: auto;
+  accent-color: var(--brink-pink);
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    label {
+      @include text-small;
+    }
+
+    input {
+      border: none;
+      border-bottom: rgba(0, 0, 0, 0.1) 2px solid;
+      transition: border-bottom-color ease-in-out 200ms;
+      padding: 0.3rem 0;
+
+      &:focus {
+        outline: none;
+        border-bottom: rgba(0, 0, 0, 0.3) 2px solid;
+      }
+    }
+  }
+
+  .input-group__checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap : 1rem;
+  }
+}
+
