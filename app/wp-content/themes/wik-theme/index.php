@@ -5,6 +5,10 @@ $the_query = new WP_Query( $args );
 
 
 <?php get_header(); ?>
+<h2>Femme, tu es au bon endroit pour apprendre.</h2>
+<?php
+    echo do_shortcode ("[baniers-list]");
+?>
 <div class="container">
     <h2><h2><?php the_title(); ?></h2></h2>
 </div>
