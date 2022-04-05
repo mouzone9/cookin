@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+
+  @include text-normal;
+}
+
+h2 {
+  @include text-title
+}
+
+h1 {
+  @include text-medium
+}
+
+main {
+  max-width: 60rem;
+  margin: 3rem auto 0 auto;
+
+  h2 {
+    text-align: center;
+  }
+}

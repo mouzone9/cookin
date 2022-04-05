@@ -1,0 +1,89 @@
+@import "https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@200;400;700&display=swap";
+body {
+  /* CSS HEX */
+  --radical-red: #ff0a54ff;
+  --french-rose: #ff477eff;
+  --brink-pink: #ff5c8aff;
+  --french-pink: #ff7096ff;
+  --pink-sherbet: #ff85a1ff;
+  --salmon-pink: #ff99acff;
+  --light-pink: #fbb1bdff;
+  --pink: #f9bec7ff;
+  --baby-pink: #f7cad0ff;
+  --pale-pink: #fae0e4ff;
+}
+/* SCSS Gradient */
+.text--title {
+  font-family: "Playfair Display", serif;
+  font-weight: normal;
+  font-size: 4.2rem;
+}
+.text--medium {
+  font-family: "Poppins", serif;
+  font-weight: bold;
+  font-size: 2.6rem;
+}
+.text--bold {
+  font-family: "Poppins", serif;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+.text--normal {
+  font-family: "Poppins", serif;
+  font-weight: normal;
+  font-size: 1.6rem;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Poppins", serif;
+  font-weight: normal;
+  font-size: 1.6rem;
+}
+h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: normal;
+  font-size: 4.2rem;
+}
+h1 {
+  font-family: "Poppins", serif;
+  font-weight: bold;
+  font-size: 2.6rem;
+}
+header {
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 2px 18px 0px;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .buttons ul {
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+}
+.button, .buttons a {
+  background-color: var(--french-pink);
+  color: var(--pale-pink);
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color ease-in-out 200ms;
+}
+.button__dark {
+  background-color: var(--french-rose);
+}
+.button:hover, .buttons a:hover {
+  background-color: var(--radical-red);
+}
+.container {
+  padding: 1rem 16px;
+}
+/*# sourceMappingURL=main.css.map */

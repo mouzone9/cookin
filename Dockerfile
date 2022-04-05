@@ -10,3 +10,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql \
 #RUN apt-get update -y
 #RUN apt-get install libyaml-dev -y
 #RUN pecl install yaml && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini && docker-php-ext-enable yaml
+#FROM node:14.17.5-alpine3.14
+
+#RUN yarn install \
+    #&& yarn run dev

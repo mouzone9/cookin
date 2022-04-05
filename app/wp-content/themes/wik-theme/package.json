@@ -1,0 +1,13 @@
+{
+  "name": "wik-theme",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel watch src/main.js",
+    "build": "parcel build ./assets/main.js"
+  },
+  "devDependencies": {
+    "parcel": "^2.3.2",
+    "@parcel/transformer-sass": "2.3.2"
+  }
+}
