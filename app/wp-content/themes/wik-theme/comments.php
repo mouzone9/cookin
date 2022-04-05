@@ -11,5 +11,4 @@ $count = absint(get_comments_number());
 <?php if (comments_open()) : ?>
     <?php comment_form(['title_reply' => '']) ?>
 <?php endif ?>
-
 <?php wp_list_comments() ?>
