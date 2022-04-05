@@ -14,14 +14,18 @@
 		<?php get_site_icon_url() ?>
     </a>
     <div class="buttons">
-		<?php if ( !is_user_logged_in() ): ?>
-            <a href="/inscription" class="button button__dark">Inscription</a>
-            <a href="/connexion" class="button">Connexion</a>
+		<?php if ( ! is_user_logged_in() && has_nav_menu( 'header-base-menu' ) ): ?>
+			<?php wp_nav_menu( array(
+				'theme_location' => 'header-base-menu',
+				'menu_class'     => 'menu',
+			) ) ?>
 		<?php endif ?>
-	    <?php if ( is_user_logged_in() ): ?>
-            <a href="/my-account/" class="button button__dark">My account</a>
-            <a href="<?= wp_logout_url("/")?>" class="button">Log out</a>
-	    <?php endif ?>
+		<?php if ( is_user_logged_in() && has_nav_menu( 'header-connected-menu' ) ): ?>
+			<?php wp_nav_menu( array(
+				'theme_location' => 'header-connected-menu',
+				'menu_class'     => 'menu',
+			) ) ?>
+		<?php endif ?>
     </div>
 </header>
-<main class="<?= join(" ", get_post_class()) ?>">
+<main class="<?= join( " ", get_post_class() ) ?>">
