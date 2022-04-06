@@ -25,7 +25,7 @@ the_post()
         </div>
         <div class="input-group">
             <button type="submit" name="wp-submit" id="wp-submit" class="button button-primary">Log in</button>
-            <input type="hidden" name="redirect_to" value="<?= get_site_url() ?>/mon-compte/">
+            <input type="hidden" name="redirect_to" value="<?= get_site_url() ?>/mes-recettes/">
         </div>
     </form>
 <?php
