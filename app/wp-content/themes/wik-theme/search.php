@@ -1,14 +1,11 @@
 <?php
-/**
- * Search result page.
- */
+/*
+Template Name: Search Page
+*/
 
 get_header();
 global $wp_query;
 
-//echo '<pre/>';
-//print_r($wp_query);
-//wp_die();
 ?>
 	<div id="primary">
 		<main id="main" class="site-main mt-5" role="main">
@@ -36,6 +33,7 @@ global $wp_query;
 										<a href="<?php echo esc_url(get_the_permalink()); ?>">
 											<?php the_title(); ?>
 										</a>
+										
 									</h3>
 									
 								</div>
