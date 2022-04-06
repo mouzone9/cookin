@@ -46,20 +46,14 @@ class metaData {
 	function wik_save_metabox( $post_id ) {
 		if (isset( $_POST['ingredients'] ) && $_POST['ingredients'] !== '' ) {
 			update_post_meta( $post_id, 'wik_ingredient', $_POST['ingredients'] );
-		} else {
-			delete_post_meta( $post_id, 'wik_ingredient' );
 		}
 
 		if ( isset( $_POST['notes'] ) && $_POST['notes'] !== '' ) {
 			update_post_meta( $post_id, 'wik_notes', $_POST['notes'] );
-		} else {
-			delete_post_meta( $post_id, 'wik_notes' );
 		}
 
 		if (isset( $_POST['price'] ) && $_POST['price'] !== '' ) {
 			update_post_meta( $post_id, 'wik_price', $_POST['price'] );
-		} else {
-			delete_post_meta( $post_id, 'wik_price' );
 		}
 	}
 }
