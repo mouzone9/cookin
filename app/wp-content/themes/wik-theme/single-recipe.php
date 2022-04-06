@@ -14,6 +14,7 @@
 			<?= get_post_meta( get_the_ID(), 'wik_note' ) ? get_post_meta( get_the_ID(), 'wik_note' )[0] : "Aucune note" ?>
         </p>
         <p><?php the_content(); ?></p>
+        <?php comments_open() || get_comments_number() ? comments_template() : "" ?>
 	<?php endwhile; ?>
 <?php endif; ?>
 
