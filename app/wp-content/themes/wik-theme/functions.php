@@ -288,6 +288,31 @@ function search_by_cat()
 {
     global $wp_query;
     if (is_search()) {
+		
+		if($_GET['minprice'] && !empty($_GET['minprice']))
+        {
+            $minprice = $_GET['minprice'];
+        } else {
+            $minprice = 0;
+        }
+
+        if($_GET['maxprice'] && !empty($_GET['maxprice']))
+        {
+            $maxprice = $_GET['maxprice'];
+        } else {
+            $maxprice = 999999;
+        }
+
+		$wp_query-> set('post_type' ,'recipe');
+		$wp_query-> set('posts_per_page' ,-1);
+		$wp_query-> set('meta_query' , array(
+		array(
+			'key' => 'wik_price',
+			'type' => 'NUMERIC',
+			'value' => array($minprice, $maxprice),
+			'compare' => 'BETWEEN'
+		)));
+
         $cat = intval($_GET['cat']);
         $cat = ($cat > 0) ? $cat : '';
         $wp_query->query_vars['cat'] = $cat;
