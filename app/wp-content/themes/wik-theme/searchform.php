@@ -4,12 +4,12 @@
     <?php wp_dropdown_categories('show_option_none=Select category'); ?>
     <input type="hidden" name="post_type" value="recipe" />
     <label for="prix-mini">Prix minimum</label>
-	<input type="number" name="prix-mini" min="0" value="<?php 
+	<input type="number" name="minprice" min="0" value="<?php 
 	if ( isset( $_GET['prix-mini'] ) && $_GET['prix-mini'] ) {
 		echo intval( $_GET['prix-mini'] );
 	} ?>" id="prix-mini">
     <label for="prix-maxi">Prix maximum</label>
-	<input type="number" name="prix-maxi" min="0" value="<?php 
+	<input type="number" name="maxprice" min="0" value="<?php 
 	if ( isset( $_GET['prix-maxi'] ) && $_GET['prix-maxi'] ) {
 		echo intval( $_GET['prix-maxi'] );
 	} ?>" id="prix-maxi">

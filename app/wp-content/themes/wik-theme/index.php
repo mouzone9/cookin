@@ -1,6 +1,7 @@
 <?php
 $args      = array('post_type' => 'recipe', 'posts_per_page' => 10);
 $the_query = new WP_Query($args);
+global $wp_query;
 ?>
 
 
@@ -9,7 +10,8 @@ $the_query = new WP_Query($args);
 
 <div class="container">
     <h2>
-        <h2><?php the_title(); ?></h2>
+        <h2><?php the_title(); ?>
+    </h2>
     </h2>
 </div>
 <?php

@@ -44,6 +44,7 @@ function create_shortcode_baniers_post_type(){
                  );
   
     $query = new WP_Query($args);
+    $result = '';
   
     if($query->have_posts()) :
 		$result = '<div class="slideshow"><ul>';
