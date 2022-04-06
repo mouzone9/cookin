@@ -90,14 +90,18 @@ function add_cpt_recipe()
 			'revisions',
 			'custom-fields',
 		),
-		'show_in_rest'       => true,
-		'hierarchical'       => false,
-		'public'             => true,
-		'has_archive'        => true,
-		"show_in_menu"       => true,
-		'publicly_queryable' => true,
-		'rewrite'            => array( 'slug' => 'recette' ),
-		'capabilities'       => [
+		/*
+		* Différentes options supplémentaires
+		*/
+		'show_in_rest' => true,
+		'hierarchical' => false,
+		'public'       => true,
+		'has_archive'  => true,
+		"show_in_menu" => true,
+		'publicly_queryable'  => true,
+		'rewrite'      => array( 'slug' => 'recette' ),
+		'taxonomies'  => array( 'category' ),
+		'capabilities' => [
 			'edit_post'          => "edit_recipe",
 			'edit_posts'         => "edit_recipe",
 			'read_post'          => "edit_recipe",
@@ -277,3 +281,15 @@ function wik_register_style_taxonomy()
 
 $MetaData = new metaData( 'ingredient' );
 $MetaData->wik();
+
+
+add_action('pre_get_posts', 'search_by_cat');
+function search_by_cat()
+{
+    global $wp_query;
+    if (is_search()) {
+        $cat = intval($_GET['cat']);
+        $cat = ($cat > 0) ? $cat : '';
+        $wp_query->query_vars['cat'] = $cat;
+    }
+}
