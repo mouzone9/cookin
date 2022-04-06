@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "parcel watch src/main.js",
-    "build": "parcel build ./assets/main.js"
+    "build": "parcel build src/main.js"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.4.1",
