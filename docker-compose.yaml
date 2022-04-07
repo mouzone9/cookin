@@ -23,6 +23,7 @@ services:
     - ./data.sql:/docker-entrypoint-initdb.d/dump.sql
 
 
+
   phpmyadmin:
     image: phpmyadmin
     restart: always

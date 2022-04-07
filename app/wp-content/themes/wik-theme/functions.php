@@ -9,18 +9,18 @@ function wik_theme_supports() {
 	add_theme_support( 'menus' );
 }
 
-add_action( 'after_setup_theme', "wik_theme_supports" );
-add_theme_support( 'post-thumbnails' );
+add_action('after_setup_theme', "wik_theme_supports");
+add_theme_support('post-thumbnails');
 
-add_action( 'after_setup_theme', "wik_theme_supports" );
+add_action('after_setup_theme', "wik_theme_supports");
 
 /* ADD STYLES */
-add_action( 'wp_enqueue_scripts', function () {
-	wp_enqueue_style( 'wik-css', get_template_directory_uri() . "/dist/main.css" );
-	wp_deregister_script( 'jquery' );
-	wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), null, true );
-	wp_enqueue_script( 'wik-js', get_template_directory_uri() . "/dist/main.js", array( 'jquery' ), '1.0.0', true );
-} );
+add_action('wp_enqueue_scripts', function () {
+	wp_enqueue_style('wik-css', get_template_directory_uri() . "/dist/main.css");
+	wp_deregister_script('jquery');
+	wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), null, true);
+	wp_enqueue_script('wik-js', get_template_directory_uri() . "/dist/main.js", array('jquery'), '1.0.0', true);
+});
 
 /* ADD SVG SUPPORT */
 function cc_mime_types( $mimes ) {
@@ -59,23 +59,23 @@ function add_cpt_recipe() {
 
 
 	$labels = array(
-		'name'               => _x( 'Recette', 'Post Type General Name' ),
-		'singular_name'      => _x( 'Recette', 'Post Type Singular Name' ),
-		'menu_name'          => __( 'Recettes' ),
-		'all_items'          => __( 'Toutes les recettes' ),
-		'view_item'          => __( 'Voir les recettes' ),
-		'add_new_item'       => __( 'Ajouter une nouvelle recette' ),
-		'add_new'            => __( 'Ajouter' ),
-		'edit_item'          => __( 'Editer la recette' ),
-		'update_item'        => __( 'Modifier la recette' ),
-		'search_items'       => __( 'Rechercher une recette' ),
-		'not_found'          => __( 'Non trouvée' ),
-		'not_found_in_trash' => __( 'Non trouvée dans la corbeille' ),
+		'name'               => _x('Recette', 'Post Type General Name'),
+		'singular_name'      => _x('Recette', 'Post Type Singular Name'),
+		'menu_name'          => __('Recettes'),
+		'all_items'          => __('Toutes les recettes'),
+		'view_item'          => __('Voir les recettes'),
+		'add_new_item'       => __('Ajouter une nouvelle recette'),
+		'add_new'            => __('Ajouter'),
+		'edit_item'          => __('Editer la recette'),
+		'update_item'        => __('Modifier la recette'),
+		'search_items'       => __('Rechercher une recette'),
+		'not_found'          => __('Non trouvée'),
+		'not_found_in_trash' => __('Non trouvée dans la corbeille'),
 	);
 
 	$args = array(
-		'label'              => __( 'Recette' ),
-		'description'        => __( 'Tous sur Recette' ),
+		'label'              => __('Recette'),
+		'description'        => __('Tous sur Recette'),
 		'labels'             => $labels,
 		'supports'           => array(
 			'title',
@@ -96,8 +96,10 @@ function add_cpt_recipe() {
 		'has_archive'        => true,
 		"show_in_menu"       => true,
 		'publicly_queryable' => true,
+
 		'rewrite'            => array( 'slug' => 'recette' ),
 		'taxonomies'         => array( 'category' ),
+
 		'capabilities'       => [
 			'edit_post'          => "edit_recipe",
 			'edit_posts'         => "edit_recipe",
@@ -200,6 +202,7 @@ add_action( "admin_post_wik_update_recipe", function () {
 			wp_redirect( "/mes-recettes" );
 		} else {
 			wp_redirect( $_POST["_wp_http_referer"] . "?message=" . sprintf( "<p class='alert'>%s</p>", $recipe->get_error_message() ) );
+
 		}
 	}
 } );
@@ -226,16 +229,21 @@ add_action("admin_post_wik_manage_account", function () {
 	}
 });
 
-add_action("admin_post_wik_register", function () {
-	if (!wp_verify_nonce($_POST["nonce_wik_register"], "register")) {
+add_action("admin_post_wik_update_recipe", function () {
+	if (!wp_verify_nonce($_POST["nonce_update_recipe"], "recipe-update")) {
 		die("wrong nonce");
 	}
 	if ($_POST) {
-		$user = wp_insert_user([
-			"user_pass"  => $_POST["pwd"],
-			"user_email" => $_POST["email"],
-			"user_login" => $_POST["username"]
+		$recipe   = wp_update_post([
+			"ID" => $_POST['id'],
+			"post_content" => $_POST["recipe_update_recipe"],
+			"post_title"   => $_POST["recipe_update_name"],
+			"post_type"    => "recipe",
+			"post_status"  => "pending",
+			"post_author"  => get_current_user_id()
 		]);
+		$thumb_id = media_handle_upload("recipe_thumb", 0, array());
+		var_dump($recipe);
 
 		if (!is_wp_error($user)) {
 			//echo sprintf( "<p class='alert'>The user %s is created ! To sign in go to the <a href='/inscription'>sign in</a> page !</p>", get_user_meta( $user )["nickname"][0] );
@@ -247,25 +255,59 @@ add_action("admin_post_wik_register", function () {
 	}
 });
 
-add_action( "admin_post_wik_delete_recipe", function () {
+		if (!is_wp_error($recipe) && !is_wp_error($thumb_id)) {
+
+			set_post_thumbnail($recipe, $thumb_id);
+
+			//			addMessage(sprintf( "Nouvelle recette '%s' crée !", get_post( $recipe )->post_title ));
+			wp_redirect($_POST["_wp_http_referer"]);
+		} else {
+			wp_redirect($_POST["_wp_http_referer"]);
+		}
+	}
+});
+
+add_action("admin_post_wik_manage_account", function () {
+	if (!wp_verify_nonce($_POST["nonce_wik_manage_account"], "account")) {
+		die("wrong nonce");
+	}
+	if ($_POST) {
+		$user = wp_update_user([
+			"ID"         => get_current_user_id(),
+			"user_pass"  => $_POST["pwd"],
+			"user_email" => $_POST["email"],
+			"user_login" => $_POST["username"]
+		]);
+
+		if (!is_wp_error($user)) {
+			//echo sprintf( "<p class='alert'>Mise à jour réussie</p>" );
+			wp_redirect($_POST["_wp_http_referer"]);
+		} else {
+			//echo sprintf( "<p class='alert'>%s</p>", $user->get_error_message() );
+			wp_redirect($_POST["_wp_http_referer"]);
+		}
+	}
+});
+
+
+add_action("admin_post_wik_delete_recipe", function () {
 	$result = "";
-	if ( user_can( get_current_user_id(), "edit_recipe" ) ) {
-		if ( isset( $_GET["recipe_id"] ) ) {
-			$result = wp_delete_post( $_GET["recipe_id"] )->post_title . " a bien été supprimé";
+	if (user_can(get_current_user_id(), "edit_recipe")) {
+		if (isset($_GET["recipe_id"])) {
+			$result = wp_delete_post($_GET["recipe_id"])->post_title . " a bien été supprimé";
 		} else {
 			$result = "Erreur : pas de 'recipe_id'";
 		}
 	} else {
 		$result = "Erreur : vous n'êtes pas autorisé à supprimer cette recette";
 	}
+
 	if ( isset( $_GET["return_to"] ) ) {
 		wp_redirect( $_GET["return_to"] );
+
 	} else {
 		wp_redirect( home_url() );
 	}
-} );
-
-} );
 
 add_filter( 'wp_check_filetype_and_ext', function ( $data, $file, $filename, $mimes ) {
 
@@ -305,7 +347,7 @@ function wik_register_style_taxonomy() {
 }
 
 
-$MetaData = new metaData( 'ingredient' );
+$MetaData = new metaData('ingredient');
 $MetaData->wik();
 
 
