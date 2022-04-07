@@ -12,6 +12,7 @@ html {
 body {
 
   @include text-normal;
+  overflow-x: hidden;
 }
 
 h2 {
@@ -23,8 +24,8 @@ h1 {
 }
 
 main {
-  max-width: 60rem;
-  margin: 3rem auto 0 auto;
+  max-width: 90%;
+  margin: 3rem auto 2em auto;
 
   h2 {
     text-align: center;
