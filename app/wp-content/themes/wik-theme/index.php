@@ -17,7 +17,11 @@ global $wp_query;
 <?php
     get_search_form();
 ?>
-<p>Voici quelques recettes qui te permettront de régaler ton mari et tes enfants :</p>
+<?php if ( have_posts() ) : ?>
+	<?php while ( have_posts() ) : the_post(); ?>
+        <p><?php the_content(); ?></p>
+	<?php endwhile; ?>
+<?php endif; ?>
 <?php if ($the_query->have_posts()) : ?>
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
         <div class="card">
