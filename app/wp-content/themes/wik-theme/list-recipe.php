@@ -11,26 +11,20 @@ if (!is_user_logged_in()) {
     wp_redirect("/");
 }
 
-$args      = array(
-	'post_type'      => 'recipe',
-	'posts_per_page' => 10,
-	'author'         => get_current_user_id(),
-	'post_status'    => 'any'
-);
-$the_query = new WP_Query( $args );
+$args      = array('post_type' => 'recipe', 'posts_per_page' => 10, 'author' => get_current_user_id(), 'post_status' => 'any');
+$the_query = new WP_Query($args);
 
 ?>
-    <h2><?= the_title() ?></h2>
-    <div class="recipes-grid">
-        <div class="recipe-row">
-            <p><strong>Titre</strong></p>
-            <p><strong>Publication</strong></p>
-            <p><strong>Catégorie</strong></p>
-            <p><strong>Statut</strong></p>
-            <p><strong>Action</strong></p>
-        </div>
-		<?php if ( $the_query->have_posts() ) : ?>
-			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+<h2><?= the_title() ?></h2>
+<div class="recipes-grid">
+    <div class="recipe-row">
+        <p><strong>Titre</strong></p>
+        <p><strong>Publication</strong></p>
+        <p><strong>Statut</strong></p>
+        <p><strong>Action</strong></p>
+    </div>
+    <?php if ($the_query->have_posts()) : ?>
+        <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
                 <div class="recipe-row">
                     <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
@@ -54,6 +48,7 @@ $the_query = new WP_Query( $args );
                             </svg>
                         </a>
                     </div>
+                <p><?= get_post(get_the_ID())->post_status ?></p>
                 </div>
             </div>
         <?php endwhile; ?>
