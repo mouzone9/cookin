@@ -13,17 +13,19 @@ $the_query = new WP_Query($args);
     </h2>
 </div>
 <?php
-    get_search_form();
+get_search_form();
 ?>
 <p>Voici quelques recettes qui te permettront de régaler ton mari et tes enfants :</p>
 <?php if ($the_query->have_posts()) : ?>
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-        <div class="card">
-            <img src="<?php the_post_thumbnail_url(); ?>" alt="">
-            <div class="bottom-card">
-                <h3><?php the_title(); ?></h3>
-                <p><?php the_excerpt(); ?></p>
-                <a class="button" href="<?php the_permalink(); ?>">Voir plus</a>
+        <div class="container">
+            <div class="card">
+                <img src="<?php the_post_thumbnail_url(); ?>" alt="">
+                <div class="bottom-card">
+                    <h3><?php the_title(); ?></h3>
+                    <p><?php the_excerpt(); ?></p>
+                    <a class="button" href="<?php the_permalink(); ?>">Voir plus</a>
+                </div>
             </div>
         </div>
     <?php endwhile; ?>
