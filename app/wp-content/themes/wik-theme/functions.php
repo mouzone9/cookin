@@ -298,9 +298,13 @@ function search_by_cat() {
 			)
 		) );
 
-		$cat                         = intval( $_GET['cat'] );
-		$cat                         = ( $cat > 0 ) ? $cat : '';
-		$wp_query->query_vars['cat'] = $cat;
+		$cat                               = intval( $_GET['cat'] );
+		$cat                               = ( $cat > 0 ) ? $cat : '';
+		$wp_query->query_vars['tax_query'] = [
+			'taxonomy' => "category",
+			'field'    => 'term_id',
+			'terms'    => $cat,
+		];
 	}
 }
 

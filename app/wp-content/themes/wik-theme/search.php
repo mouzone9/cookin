@@ -9,9 +9,9 @@ global $wp_query;
 ?>
 	<div id="primary">
 		<main id="main" class="site-main mt-5" role="main">
-			<div class="container">
+			<div>
 				<header class="mb-5">
-                    <?php 
+                    <?php
                         $wp_query->set('post_type', 'recipe');
                     ?>
 					<h1 class="page-title"> <?php echo $wp_query->found_posts; ?>
@@ -23,8 +23,8 @@ global $wp_query;
 
 					<div>
 
-						<?php 
-                        
+						<?php
+
                         while ( have_posts() ) {
 							the_post(); ?>
 							<div class="card mb-5 pb-3">
@@ -33,9 +33,9 @@ global $wp_query;
 										<a href="<?php echo esc_url(get_the_permalink()); ?>">
 											<?php the_title(); ?>
 										</a>
-										
+
 									</h3>
-									
+
 								</div>
 							</div>
 
@@ -43,7 +43,7 @@ global $wp_query;
 
 					</div>
 
-					
+
 
 				<?php } else {
 					get_search_form();
