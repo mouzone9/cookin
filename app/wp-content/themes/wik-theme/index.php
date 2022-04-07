@@ -1,6 +1,7 @@
 <?php
 $args      = array('post_type' => 'recipe', 'posts_per_page' => 10);
 $the_query = new WP_Query($args);
+global $wp_query;
 ?>
 
 
@@ -9,13 +10,18 @@ $the_query = new WP_Query($args);
 
 <div class="container">
     <h2>
-        <h2><?php the_title(); ?></h2>
+        <h2><?php the_title(); ?>
+    </h2>
     </h2>
 </div>
 <?php
 get_search_form();
 ?>
-<p>Voici quelques recettes qui te permettront de régaler ton mari et tes enfants :</p>
+<?php if ( have_posts() ) : ?>
+	<?php while ( have_posts() ) : the_post(); ?>
+        <p><?php the_content(); ?></p>
+	<?php endwhile; ?>
+<?php endif; ?>
 <?php if ($the_query->have_posts()) : ?>
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
         <div class="container">
