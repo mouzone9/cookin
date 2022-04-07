@@ -2,54 +2,34 @@
 /*
 Template Name: Search Page
 */
-
-get_header();
 global $wp_query;
 
 ?>
-	<div id="primary">
-		<main id="main" class="site-main mt-5" role="main">
-			<div class="container">
-				<header class="mb-5">
-                    <?php 
-                        $wp_query->set('post_type', 'recipe');
-                    ?>
-					<h1 class="page-title"> <?php echo $wp_query->found_posts; ?>
-						<?php _e( 'Search Results Found For', 'locale' ); ?>: "<?php the_search_query(); ?>"
-					</h1>
-				</header>
+		
+			
+		<?php get_header(); ?>
 
-				<?php if ( have_posts() ) { ?>
 
-					<div>
+<div class="container">
+        <h2>Recherche :</h2>
 
-						<?php 
-                        
-                        while ( have_posts() ) {
-							the_post(); ?>
-							<div class="card mb-5 pb-3">
-								<div class="card-body">
-									<h3 class="card-title">
-										<a href="<?php echo esc_url(get_the_permalink()); ?>">
-											<?php the_title(); ?>
-										</a>
-										
-									</h3>
-									
-								</div>
-							</div>
+</div>
+<?php
+    get_search_form();
+?>
 
-						<?php } ?>
-
-					</div>
-
-					
-
-				<?php } else {
-					get_search_form();
-				}?>
-
-			</div>
-		</main>
-	</div>
+<?php if ($wp_query->have_posts()) : ?>
+    <div class="card-container">
+    <?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
+            <div class="card">
+                <img class="img-responsive" src="<?php the_post_thumbnail_url(); ?>" alt="">
+                <div class="overlay">
+                    <h2><?php the_title(); ?></h2>
+                    <p><?php the_excerpt(); ?></p>
+                    <a class="info" href="<?php the_permalink(); ?>">Voir plus</a>
+                </div>
+            </div>
+    <?php endwhile; ?>
+    </div>
+<?php endif; ?>
 <?php get_footer(); ?>

@@ -18,6 +18,7 @@
 			<?php wp_nav_menu( array(
 				'theme_location' => 'header-base-menu',
 				'menu_class'     => 'menu',
+
 			) ) ?>
 		<?php endif ?>
 		<?php if ( is_user_logged_in() && has_nav_menu( 'header-connected-menu' ) ): ?>

@@ -20,6 +20,7 @@ $the_query = new WP_Query($args);
     <div class="recipe-row">
         <p><strong>Titre</strong></p>
         <p><strong>Publication</strong></p>
+        <p><strong>Catégorie</strong></p>
         <p><strong>Statut</strong></p>
         <p><strong>Action</strong></p>
     </div>
@@ -50,9 +51,10 @@ $the_query = new WP_Query($args);
                     </div>
                 <p><?= get_post(get_the_ID())->post_status ?></p>
                 </div>
-            </div>
+          
         <?php endwhile; ?>
     <?php endif; ?>
+    </div>
 </div>
 
 <?php
