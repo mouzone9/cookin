@@ -6,15 +6,13 @@ global $wp_query;
 
 
 <?php get_header(); ?>
-<div class="container">
-    <h2>
-        <h2><?php the_title(); ?>
-    </h2>
-    </h2>
-</div>
+
+<h2>Bienvenue sur Cook-Inn</h2>
+
 <?php
 get_search_form();
 ?>
+
 <?php if ($the_query->have_posts()) : ?>
     <div class="card-container">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
@@ -23,7 +21,7 @@ get_search_form();
                 <img class="img-responsive" src="<?php the_post_thumbnail_url(); ?>" alt="">
                 <div class="overlay">
                     <h2><?php the_title(); ?></h2>
-                    <p><?php the_excerpt(); ?></p>
+                    
                     <a class="info" href="<?php the_permalink(); ?>">Voir plus</a>
                 </div>
             </div>

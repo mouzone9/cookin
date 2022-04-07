@@ -26,9 +26,17 @@ class metaData {
 
 
 	function wik_metabox_render() {
-		$ingredients = get_post_meta( $_GET['post'], "wik_ingredient", true );
-		$price = get_post_meta( $_GET['post'], "wik_price", true ) ;
-		$note = get_post_meta( $_GET['post'], "wik_notes", true );
+
+		if(isset($_GET['post'])){
+			$ingredients = get_post_meta( $_GET['post'], "wik_ingredient", true );
+			$price = get_post_meta( $_GET['post'], "wik_price", true ) ;
+			$note = get_post_meta( $_GET['post'], "wik_notes", true );
+		} else {
+			$ingredients = "";
+			$price = "";
+			$note = "";
+		}
+		
 		?>
         <div class="metabox">
             <label>Ingrédients</label>
