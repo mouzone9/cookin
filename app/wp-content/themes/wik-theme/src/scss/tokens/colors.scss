@@ -1,0 +1,24 @@
+body {
+  /* CSS HEX */
+  --radical-red: #ff0a54ff;
+  --french-rose: #ff477eff;
+  --brink-pink: #ff5c8aff;
+  --french-pink: #ff7096ff;
+  --pink-sherbet: #ff85a1ff;
+  --salmon-pink: #ff99acff;
+  --light-pink: #fbb1bdff;
+  --pink: #f9bec7ff;
+  --baby-pink: #f7cad0ff;
+  --pale-pink: #fae0e4ff;
+}
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #ff0a54ff, #ff477eff, #ff5c8aff, #ff7096ff, #ff85a1ff, #ff99acff, #fbb1bdff, #f9bec7ff, #f7cad0ff, #fae0e4ff);
+$gradient-right: linear-gradient(90deg, #ff0a54ff, #ff477eff, #ff5c8aff, #ff7096ff, #ff85a1ff, #ff99acff, #fbb1bdff, #f9bec7ff, #f7cad0ff, #fae0e4ff);
+$gradient-bottom: linear-gradient(180deg, #ff0a54ff, #ff477eff, #ff5c8aff, #ff7096ff, #ff85a1ff, #ff99acff, #fbb1bdff, #f9bec7ff, #f7cad0ff, #fae0e4ff);
+$gradient-left: linear-gradient(270deg, #ff0a54ff, #ff477eff, #ff5c8aff, #ff7096ff, #ff85a1ff, #ff99acff, #fbb1bdff, #f9bec7ff, #f7cad0ff, #fae0e4ff);
+$gradient-top-right: linear-gradient(45deg, #ff0a54ff, #ff477eff, #ff5c8aff, #ff7096ff, #ff85a1ff, #ff99acff, #fbb1bdff, #f9bec7ff, #f7cad0ff, #fae0e4ff);
+$gradient-bottom-right: linear-gradient(135deg, #ff0a54ff, #ff477eff, #ff5c8aff, #ff7096ff, #ff85a1ff, #ff99acff, #fbb1bdff, #f9bec7ff, #f7cad0ff, #fae0e4ff);
+$gradient-top-left: linear-gradient(225deg, #ff0a54ff, #ff477eff, #ff5c8aff, #ff7096ff, #ff85a1ff, #ff99acff, #fbb1bdff, #f9bec7ff, #f7cad0ff, #fae0e4ff);
+$gradient-bottom-left: linear-gradient(315deg, #ff0a54ff, #ff477eff, #ff5c8aff, #ff7096ff, #ff85a1ff, #ff99acff, #fbb1bdff, #f9bec7ff, #f7cad0ff, #fae0e4ff);
+$gradient-radial: radial-gradient(#ff0a54ff, #ff477eff, #ff5c8aff, #ff7096ff, #ff85a1ff, #ff99acff, #fbb1bdff, #f9bec7ff, #f7cad0ff, #fae0e4ff);

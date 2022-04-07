@@ -1,0 +1,32 @@
+.button, .menu > li.menu-item > a, .reply, input[type=submit] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--french-pink);
+  color: var(--pale-pink);
+  max-width: 30rem;
+  margin: auto;
+  padding: 0.8rem 2rem;
+  border-radius: 5rem;
+  text-decoration: none;
+  //@include text-bold
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  transition: background-color ease-in-out 200ms;
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+    fill : white;
+  }
+}
+
+.button__dark {
+  background-color: var(--french-rose);
+}
+.button:hover, .buttons a:hover {
+  background-color: var(--radical-red);
+  text-decoration: none;
+  color: white;
+}

@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+
+  @include text-normal;
+  overflow-x: hidden;
+}
+
+h2 {
+  @include text-title
+}
+
+h1 {
+  @include text-medium
+}
+
+main {
+  max-width: 90%;
+  margin: 3rem auto 2em auto;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--brink-pink);
+  }
+}
+
+
+.is-flex-container {
+  display: flex;
+}
