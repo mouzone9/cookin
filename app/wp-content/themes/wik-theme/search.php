@@ -10,14 +10,13 @@ global $wp_query;
 		<?php get_header(); ?>
 
 
-<div class="container">
-        <h2>Recherche :</h2>
 
-</div>
+        
+
 <?php
     get_search_form();
 ?>
-
+<h2>Recherche :</h2>
 <?php if ($wp_query->have_posts()) : ?>
     <div class="card-container">
     <?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
