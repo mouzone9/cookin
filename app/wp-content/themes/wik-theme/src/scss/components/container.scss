@@ -1,10 +1,11 @@
 .container {
-    grid-template-areas: "card card card";
-    display: inline-block;
+    display               : grid;
+    grid-template-columns : repeat(auto-fill, minmax(220px, 1fr));
+    grid-gap              : 15px;
 }
 
 .card-custom {
-    grid-area: card;
+    grid-area : card;
 }
 
 .card-container {

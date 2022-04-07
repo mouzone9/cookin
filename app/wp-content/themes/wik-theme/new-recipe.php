@@ -7,6 +7,11 @@
 get_header();
 the_post();
 
+$categories = get_terms( [
+	'taxonomy'   => 'category',
+	'hide_empty' => false
+] );
+
 if ( ! is_user_logged_in() ) {
 	wp_redirect( "/" );
 }
@@ -18,6 +23,14 @@ if ( ! is_user_logged_in() ) {
             <div class="input-group">
                 <label for="recipe_name">Nom</label>
                 <input type="text" name="recipe_name" id="recipe_name" class="input" size="20" placeholder="Pot au feu">
+            </div>
+            <div class="input-group">
+                <label for="recipe_category">Catégorie</label>
+                <select name="recipe_category" id="recipe_category" class="input" required>
+					<?php foreach ( $categories as $category ): ?>
+                        <option value="<?= $category->term_id?>"><?=$category->name?></option>
+					<?php endforeach; ?>
+                </select>
             </div>
             <div class="input-group">
                 <label for="ingredients">Ingrédients</label>
