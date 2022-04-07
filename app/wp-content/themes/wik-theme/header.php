@@ -10,7 +10,7 @@
 <body>
 <header>
     <a href="<?= get_site_url() ?>">
-        <img src="<?= get_template_directory_uri() ?>/src/img/logo.svg" class="logo"/>
+        <img src="<?= get_template_directory_uri() ?>/src/img/logo-2.svg" class="logo"/>
 		<?php get_site_icon_url() ?>
     </a>
     <div class="buttons">
