@@ -16,7 +16,7 @@ get_search_form();
 <?php if ($the_query->have_posts()) : ?>
     <div class="card-container">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-        
+
             <div class="card">
                 <img class="img-responsive" src="<?php the_post_thumbnail_url(); ?>" alt="">
                 <div class="overlay">
@@ -25,7 +25,7 @@ get_search_form();
                     <a class="info" href="<?php the_permalink(); ?>">Voir plus</a>
                 </div>
             </div>
-        
+
     <?php endwhile; ?>
     </div>
 <?php endif; ?>

@@ -1,0 +1,39 @@
+.recipe {
+
+  .content {
+    max-width: 900px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    gap: 2rem;
+    min-height: 300px;
+  }
+
+  .meta {
+    padding: 1rem;
+    border: 1px solid black;
+    align-self: stretch;
+    justify-self: stretch;
+  }
+  img.thumbnail  {
+    max-height: 30vh;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .comments {
+    max-width: 40rem;
+    margin: auto;
+    margin-top: 2rem;
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    li {
+      list-style: none;
+      margin-top: 1rem;
+    }
+  }
+}
