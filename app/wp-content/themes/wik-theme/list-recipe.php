@@ -7,8 +7,8 @@
 get_header();
 the_post();
 
-if ( ! is_user_logged_in() ) {
-	wp_redirect( "/" );
+if (!is_user_logged_in()) {
+    wp_redirect("/");
 }
 
 $args      = array(
@@ -55,9 +55,10 @@ $the_query = new WP_Query( $args );
                         </a>
                     </div>
                 </div>
-			<?php endwhile; ?>
-		<?php endif; ?>
-    </div>
+            </div>
+        <?php endwhile; ?>
+    <?php endif; ?>
+</div>
 
 <?php
 get_footer();
