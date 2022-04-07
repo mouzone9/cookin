@@ -145,6 +145,7 @@ function register_menus() {
 
 add_action( 'init', 'register_menus' );
 
+/* Action pour ajouter une recette en bdd */
 add_action( "admin_post_wik_add_recipe", function () {
 	if ( ! wp_verify_nonce( $_POST["nonce_new_recipe"], "recipe" ) ) {
 		die( "wrong nonce" );
@@ -173,7 +174,7 @@ add_action( "admin_post_wik_add_recipe", function () {
 	}
 } );
 
-
+/* action pour éditer une recette */
 add_action( "admin_post_wik_update_recipe", function () {
 	if ( ! wp_verify_nonce( $_POST["nonce_update_recipe"], "recipe-update" ) ) {
 		die( "wrong nonce" );
@@ -207,7 +208,7 @@ add_action( "admin_post_wik_update_recipe", function () {
 	}
 } );
 
-
+/* Action pour supprimer une recette */
 add_action( "admin_post_wik_delete_recipe", function () {
 	$result = "";
 	if ( user_can( get_current_user_id(), "edit_recipe" ) ) {
@@ -227,22 +228,6 @@ add_action( "admin_post_wik_delete_recipe", function () {
 		wp_redirect( home_url() );
 	}
 } );
-
-add_filter( 'wp_check_filetype_and_ext', function ( $data, $file, $filename, $mimes ) {
-
-	global $wp_version;
-	if ( $wp_version !== '4.7.1' ) {
-		return $data;
-	}
-
-	$filetype = wp_check_filetype( $filename, $mimes );
-
-	return [
-		'ext'             => $filetype['ext'],
-		'type'            => $filetype['type'],
-		'proper_filename' => $data['proper_filename']
-	];
-}, 10, 4 );
 
 
 add_action( 'init', 'wik_register_style_taxonomy' );
@@ -265,11 +250,11 @@ function wik_register_style_taxonomy() {
 	register_taxonomy( 'style', [ 'post' ], $args );
 }
 
-
+/* Ajout des métadatas */
 $MetaData = new metaData( 'ingredient' );
 $MetaData->wik();
 
-
+/* Ajout de filtres à la recherce */
 add_action( 'pre_get_posts', 'search_by_cat' );
 function search_by_cat() {
 	global $wp_query;
