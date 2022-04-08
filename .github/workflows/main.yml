@@ -31,6 +31,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          fingerprint: ${{3072 SHA256:EzoJ8gmanit/G491pHKCiijE3NK8mopOAONlt2G3pQg 185.189.156.162}}
+          fingerprint: ${{ secrets.FINGERPRINT}}
           #port: ${{ secrets.PORT }}
           script: ssh debian@185.189.156.162 bash deploy_dev.sh
