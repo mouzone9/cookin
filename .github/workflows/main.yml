@@ -31,6 +31,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          fingerprint: ${{ secrets.FINGERPRINT}}
+         #fingerprint: ${{ secrets.FINGERPRINT}}
           #port: ${{ secrets.PORT }}
           script: bash deploy_dev.sh
