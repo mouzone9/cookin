@@ -46,7 +46,7 @@ sudo docker-compose exec -T php wp search-replace $oldSiteUrl $siteUrl --allow-r
 
 echo "DEPLOY FINISHED"
 ```
-Qui est appelé par les "github actions" ([ici](https://github.com/mouzone9/cookin/tree/main/.github/workflows) en ssh
+Qui est appelé par les "github actions" ([ici](https://github.com/mouzone9/cookin/tree/main/.github/workflows)) en ssh
 
 ## Sauvegarde des bases de données 
 Script de sauvegarde :
