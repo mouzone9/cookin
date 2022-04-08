@@ -33,4 +33,4 @@ jobs:
           key: ${{ secrets.KEY }}
          #fingerprint: ${{ secrets.FINGERPRINT}}
           #port: ${{ secrets.PORT }}
-          script: sudo bash deploy_dev.sh
+          script: bash deploy_dev.sh
