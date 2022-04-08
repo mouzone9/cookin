@@ -8,7 +8,6 @@ global $wp_query;
 <?php get_header(); ?>
 
 <h2>Bienvenue sur Cook-Inn ! </h2>
-<p>J'aime la soupe</p>
 <?php
 get_search_form();
 ?>
