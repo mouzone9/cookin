@@ -28,4 +28,5 @@ Et pour accéder à php my admin aller (ici)[http://localhost:8080]
 - Modérateur (recette/commentaires) : usr = moderator, pwd = moderator
 - Utilisateur lambda : un formulaire est à votre dispo pour vous inscrire (ici)[http://localhost:2345/inscription]
 
-
+## Infrastructure
+Voir (ici)[./INFRASTRUCTURE.md]
