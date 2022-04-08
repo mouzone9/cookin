@@ -7,8 +7,8 @@ global $wp_query;
 
 <?php get_header(); ?>
 
-<h2>Bienvenue sur Cook-Inn</h2>
-
+<h2>Bienvenue sur Cook-Inn ! </h2>
+<p>Marmiton mais en mieux</p>
 <?php
 get_search_form();
 ?>
@@ -21,7 +21,7 @@ get_search_form();
                 <img class="img-responsive" src="<?php the_post_thumbnail_url(); ?>" alt="">
                 <div class="overlay">
                     <h2><?php the_title(); ?></h2>
-                    
+
                     <a class="info" href="<?php the_permalink(); ?>">Voir plus</a>
                 </div>
             </div>
